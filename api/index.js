@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import userRouter from "./routes/user.route.js";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/auth.route.js";
+import listingRouter from "./routes/listing.route.js";
 dotenv.config();
 
 //initializing express app
@@ -28,6 +29,7 @@ mongoose
 //Routes
 app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
+app.use("/api/listing", listingRouter);
 
 // creating a middleware to handle error || success msg
 app.use((err, req, res, next) => {
