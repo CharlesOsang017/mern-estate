@@ -10,8 +10,9 @@ import {
 import OAuth from "../components/OAuth";
 
 const SignIn = () => {
+ 
   const [formData, setFormData] = useState({});
-  const {loading, error} = useSelector((state)=> state.user)
+  const { loading, error } = useSelector(state => state.user)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleChange = (e) => {
@@ -36,14 +37,13 @@ const SignIn = () => {
       });
       const data = await res.json();
       if (data.success === false) {
-        setLoading(false);
-        setError(data.message);
+        dispatch(signInFailure(data.message));
         return;
       }
       dispatch(signInSuccess(data));
       navigate("/");
     } catch (error) {
-      dispatch(signInFailure(data.message));
+      dispatch(signInFailure(error.message));
     }
   };
   return (
