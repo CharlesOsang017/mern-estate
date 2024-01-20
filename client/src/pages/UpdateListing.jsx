@@ -7,7 +7,7 @@ import {
 } from "firebase/storage";
 import { app } from "../firebase";
 import { useSelector } from "react-redux";
-import {useNavigate, useParams} from 'react-router-dom'
+import {useNavigate , useParams} from 'react-router-dom'
 
 const CreateListing = () => {
   const [files, setFiles] = useState([]);
