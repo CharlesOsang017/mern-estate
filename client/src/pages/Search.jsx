@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ListingItem from '../components/ListingItem';
 // import ListingItem from '../components/ListingItem';
 
 export default function Search() {
@@ -229,7 +230,7 @@ console.log(listings);
           </button>
         </form>
       </div>
-      {/* <div className='flex-1'>
+      <div className='flex-1'>
         <h1 className='text-3xl font-semibold border-b p-3 text-slate-700 mt-5'>
           Listing results:
         </h1>
@@ -249,16 +250,16 @@ console.log(listings);
               <ListingItem key={listing._id} listing={listing} />
             ))}
 
-          {showMore && (
+          {/* {showMore && (
             <button
               onClick={onShowMoreClick}
               className='text-green-700 hover:underline p-7 text-center w-full'
             >
               Show more
             </button>
-          )}
+          )} */}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
