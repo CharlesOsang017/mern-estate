@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { TiWeatherSunny } from "react-icons/ti";
+import { FaMoon } from "react-icons/fa";
+
 
 const Header = () => {
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState('')
+  const [darkMode, setDarkMode] = useState(false)
   const {currentUser} = useSelector((state) => state.user)
   // console.log(currentUser)
   //search functionality
@@ -25,6 +29,11 @@ const Header = () => {
       setSearchTerm(searchTermFromUrl)
     }
   },[location.search])
+
+  const handleTheme=()=>{
+    setDarkMode(prevState => !prevState)
+  }
+  console.log(darkMode)
   return (
     <header className='bg-slate-200 shadow-md'>
       <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
@@ -46,17 +55,17 @@ const Header = () => {
           <FaSearch className='text-slate-600' />
           </button>
         </form>
-        <ul className='flex gap-4'>
+        <ul className='flex items-center gap-4'>
           <Link to='/'>
             <li className='hidden sm:inline text-slate-700 hover:underline cursor-pointer'>
               Home
             </li>
           </Link>
-          <Link to='/about'>
-            <li className='hidden sm:inline text-slate-700 hover:underline cursor-pointer'>
-              About
+          
+            <li className='cursor-pointer text-xl' onClick={handleTheme}>
+              {darkMode ? <TiWeatherSunny /> : <FaMoon />}
             </li>
-          </Link>
+          
           <Link to='/profile'>
             {currentUser ? (
               <>
